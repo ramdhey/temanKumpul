@@ -41,8 +41,8 @@ const NavBar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-//   const fullName = `${user.firstName} ${user.lastName}`;
-const fullName = 'Rama'
+  const fullName = `${user.firstName} ${user.lastName}`;
+  // const fullName = 'Rama'
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -133,8 +133,17 @@ const fullName = 'Rama'
               <Close />
             </IconButton>
           </Box>
-          <FlexBetween gap="3rem" display="flex" flexDirection="column" justifyContent="center" alignItems="center"> 
-            <IconButton onClick={() => dispatch(setMode())} sx={{ fontSize: "25px" }} >
+          <FlexBetween
+            gap="3rem"
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <IconButton
+              onClick={() => dispatch(setMode())}
+              sx={{ fontSize: "25px" }}
+            >
               {theme.palette.mode === "dark" ? (
                 <DarkMode sx={{ fontSize: "25px" }} />
               ) : (

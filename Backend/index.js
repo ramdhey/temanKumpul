@@ -50,7 +50,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage})
 
 // Router file Upload
-app.post("auth/register",upload.single("picture"),register)
+app.post("/register",upload.single("picture"),register)
 app.post("/posts",verifyToken,upload.single("picture"),createPost)
 
 
