@@ -34,7 +34,7 @@ const FriendListWidget = ({userId})=>{
     return(
         <WidgetWrapper>
             <Typography color={palette.primary.main} variant="h5" fontWeight="500" sx={{mb:1}}>
-                Friend List
+                Daftar Teman
 
             </Typography>
             <Box display="flex" flexDirection="column" gap="1.5rem">

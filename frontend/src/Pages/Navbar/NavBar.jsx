@@ -1,4 +1,6 @@
 import React from "react";
+import logo from "../../Image/logo.png"
+
 import { useState } from "react";
 import {
   Box,
@@ -10,6 +12,7 @@ import {
   FormControl,
   useTheme,
   useMediaQuery,
+  Dialog,
 } from "@mui/material";
 import {
   Search,
@@ -28,10 +31,15 @@ import FlexBetween from "../../Components/FlexBetween";
 
 const NavBar = () => {
   const [isMobileMenuToggle, setIsMobileMenuToggle] = useState(false);
+ const [openAbout, setOpenAbout] = useState(false);
+ const hideDialog = () => {
+   setOpenAbout(!openAbout);
+ };
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  
 
   const theme = useTheme();
 
@@ -47,7 +55,9 @@ const NavBar = () => {
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
       <FlexBetween gap="1.75rem">
+        <img src={logo} alt="logo" width="50px" height="50px" />
         <Typography
+          marginLeft="-1rem"
           fontWeight="bold"
           fontSize="clamp(1rem,2rem,2.25rem)"
           color="#35C8F6"
@@ -57,7 +67,7 @@ const NavBar = () => {
           temanKumpul
         </Typography>
 
-        {isNonMobileScreens && (
+        {/* {isNonMobileScreens && (
           <FlexBetween
             backgroundColor={neutralLight}
             borderRadius="9px"
@@ -69,10 +79,14 @@ const NavBar = () => {
               <Search />
             </IconButton>
           </FlexBetween>
-        )}
+        )} */}
       </FlexBetween>
       {isNonMobileScreens ? (
-        <FlexBetween gap="2rem">
+        <FlexBetween
+          gap="3rem"
+          marginLeft="17rem"
+          justifyContent="space-between"
+        >
           <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
               <DarkMode sx={{ fontSize: "25px" }} />
@@ -80,16 +94,59 @@ const NavBar = () => {
               <LightMode sx={{ color: dark, fontSize: "25px" }} />
             )}
           </IconButton>
-          <Message sx={{ fontSize: "25px" }} />
-          <Notifications sx={{ fontSize: "25px" }} />
-          <Help sx={{ fontSize: "25px" }} />
+          {/* <Message  sx={{ fontSize: "25px" }} />
+          <Notifications sx={{ fontSize: "25px" }} /> */}
+
+          <IconButton
+            onClick={() => setOpenAbout(!openAbout)}
+            sx={{ fontSize: "25px" }}
+          >
+            <Help sx={{ fontSize: "25px" }} />
+          </IconButton>
+
+          <Dialog
+            open={openAbout}
+            onClose={hideDialog}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "1rem",
+                padding: "1rem",
+              }}
+            >
+              <IconButton onClick={hideDialog} sx={{ alignSelf: "flex-end" }} >
+                <Close />
+              </IconButton>
+              <Typography
+                sx={{ fontSize: "1.5rem", fontWeight: "bold" }}
+                id="alert-dialog-title"
+              >
+                About
+              </Typography>
+              <Typography
+                sx={{ fontSize: "1rem", fontWeight: "bold" }}
+                id="alert-dialog-description"
+              >
+                temanKumpul adalah aplikasi social media simple yang di buat
+                oleh Rama Dhea Yudhistira
+              </Typography>
+            </Box>
+          </Dialog>
+
           <FormControl variant="standard" value={fullName}>
             <Select
               value={fullName}
               sx={{
                 backgroundColor: neutralLight,
-                width: "150px",
+                width: "200px",
                 borderRadius: "0.25rem",
+
                 p: "0.25rem 1rem",
                 "& .MuiSvgIcon-root": {
                   pr: "0.25rem",
@@ -102,7 +159,9 @@ const NavBar = () => {
               input={<InputBase />}
             >
               <MenuItem value={fullName}>
-                <Typography>{fullName}</Typography>
+                <Typography onClick={() => navigate("/home")}>
+                  {fullName}
+                </Typography>
               </MenuItem>
               <MenuItem onClick={() => dispatch(setLogout())}>Logout</MenuItem>
             </Select>
@@ -150,9 +209,9 @@ const NavBar = () => {
                 <LightMode sx={{ color: dark, fontSize: "25px" }} />
               )}
             </IconButton>
-            <Message sx={{ fontSize: "25px" }} />
-            <Notifications sx={{ fontSize: "25px" }} />
-            <Help sx={{ fontSize: "25px" }} />
+            {/* <Message sx={{ fontSize: "25px" }} />
+            <Notifications sx={{ fontSize: "25px" }} /> */}
+
             <FormControl variant="standard" value={fullName}>
               <Select
                 value={fullName}
