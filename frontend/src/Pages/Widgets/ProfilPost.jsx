@@ -48,7 +48,7 @@ const ProfilPost = ({ picturePath,userId }) => {
       formData.append("picturePath", image.name);
     }
 
-    const response = await fetch("http://localhost:4044/posts", {
+    const response = await fetch("https://tkserver.onrender.com/posts", {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
@@ -60,10 +60,13 @@ const ProfilPost = ({ picturePath,userId }) => {
   };
 
   const getUser = async () => {
-    const response = await fetch(`http://localhost:4044/users/${userId}`, {
-      method: "GET",
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await fetch(
+      `https://tkserver.onrender.com/users/${userId}`,
+      {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     const data = await response.json();
     setUser(data);
   };

@@ -2,18 +2,17 @@ import { Box } from "@mui/material";
 
 
 const UserImage = ({image,size="60px"})=>{
-    return(
-        <Box>
-      <img
-        style={{ objectFit: "cover", borderRadius: "50%" }}
-        width={size}
-        height={size}
-        alt="user"
-        src={`http://localhost:4044/assets/${image}`}
-      />
-    </Box>
-
-    )
+    return (
+      <Box>
+        <img
+          style={{ objectFit: "cover", borderRadius: "50%" }}
+          width={size}
+          height={size}
+          alt="user"
+          src={`https://tkserver.onrender.com/assets/${image}`}
+        />
+      </Box>
+    );
     
 }
 

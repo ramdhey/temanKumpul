@@ -62,15 +62,13 @@ const Form = () => {
     for(let value in values){
       formData.append(value,values[value]);
     }
-    formData.append("picturePath",values.picture.name);
+    formData.append("picturePath",values.picturePath.name);
 
-    const savedUserResponse = await fetch(
-      "http://localhost:4044/register",
-      {
+    const savedUserResponse = await fetch("https://tkserver.onrender.com/register",{
         method: "POST",
         body: formData,
-
-      })
+      }
+    );
       const savedUser = await savedUserResponse.json()
       onSubmitProps.resetForm()
 
@@ -82,10 +80,10 @@ const Form = () => {
 
   const login = async (values, onSubmitProps) => {
     const logedInResponse = await fetch(
-      "http://localhost:4044/auth/login",
+      "https://tkserver.onrender.com/auth/login",
       {
         method: "POST",
-        headers:{"Content-Type":"application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       }
     );

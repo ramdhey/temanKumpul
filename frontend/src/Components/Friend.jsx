@@ -22,7 +22,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const isFriend = friends.find((friend) => friend._id === friendId);
 
   const patchFriend = async (friendId) => {
-    const response = await fetch(`http://localhost:4044/users/${_id}/${friendId}`, {
+    const response = await fetch(`https://tkserver.onrender.com/users/${_id}/${friendId}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,

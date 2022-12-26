@@ -25,7 +25,7 @@ const AdvertWidget = () => {
           width="100%"
           height="auto"
           alt="advert"
-          src="http://localhost:4044/assets/coffe.jpeg"
+          src="https://tkserver.onrender.com/assets/coffe.jpeg"
           style={{ borderRadius: "0.75rem", margin: "0.75rem 0" }}
         />
         <FlexBetween>
@@ -36,7 +36,8 @@ const AdvertWidget = () => {
         </FlexBetween>
 
         <Typography color={medium} m="0.5rem 0">
-          Kopi segar teman semangat kamu untuk awali hari,yuk mampir atau delivery ke Ngopi, dan rasakan bahagianya.
+          Kopi segar teman semangat kamu untuk awali hari,yuk mampir atau
+          delivery ke Ngopi, dan rasakan bahagianya.
         </Typography>
       </WidgetWrapper>
     );

@@ -16,13 +16,12 @@ const FriendListWidget = ({userId})=>{
 
     const getFriends = async ()=>{
         const response = await fetch(
-            `http://localhost:4044/users/${userId}/friends`,
-            {
-                method:"GET",
-                headers:{Authorization:`Bearer ${token}`}
-            }
-
-        )
+          `https://tkserver.onrender.com/users/${userId}/friends`,
+          {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         const data = await response.json();
         dispatch(setFriends({friends:data}))
     }
